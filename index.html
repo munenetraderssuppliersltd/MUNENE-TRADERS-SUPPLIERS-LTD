@@ -1240,21 +1240,21 @@ nav{padding:0 20px}
 <div class="form-row">
 <div class="form-group">
 <label>FIRST NAME</label>
-<input type="text" placeholder="John">
+<input type="text" id="firstName" placeholder="John">
 </div>
 <div class="form-group">
 <label>LAST NAME</label>
-<input type="text" placeholder="Doe">
+<input type="text" id="lastName" placeholder="Doe">
 </div>
 </div>
 <div class="form-group">
 <label>EMAIL ADDRESS</label>
-<input type="email" placeholder="john@example.com">
+<input type="email" id="email" placeholder="john@example.com">
 </div>
 <div class="form-group">
 <label>SERVICE OF INTEREST</label>
-<select>
-<option value="" disabled selected>Select a service</option>
+<select id="service">
+<option value="" dpisabled selected>Select a service</option>
 <option>Agriculture</option>
 <option>Branding &amp; Printing</option>
 <option>Investments</option>
@@ -1265,7 +1265,9 @@ nav{padding:0 20px}
 <label>MESSAGE</label>
 <textarea placeholder="Tell us how we can help you..."></textarea>
 </div>
-<button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Send Message <i class="fas fa-paper-plane"></i></button>
+<button type="button" onclick="sendToWhatsApp()" class="btn btn-primary" style="width:100%;justify-content:center">
+Send Message <i class="fas fa-paper-plane"></i>
+</button>
 </div>
 </div>
 </section>
@@ -1330,6 +1332,26 @@ Contact Us
 </footer>
 
 <script>
+function sendToWhatsApp(){
+var firstName = document.getElementById('firstName').value;
+var lastName = document.getElementById('lastName').value;
+var email = document.getElementById('email').value;
+var service = document.getElementById('service').value;
+var message = document.getElementById('message').value;
+
+var phone = "254742668947";
+
+var text = "Hello Munene Traders,%0A%0A"
++ "*Name:* " + firstName + " " + lastName + "%0A"
++ "*Email:* " + email + "%0A"
++ "*Service:* " + service + "%0A"
++ "*Message:* " + message;
+
+var url = "https://wa.me/" + phone + "?text=" + text;
+
+window.open(url, '_blank');
+                                        }
+
 (function(){
 var navbar = document.getElementById('navbar');
 
